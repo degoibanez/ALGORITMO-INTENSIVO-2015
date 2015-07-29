@@ -1,0 +1,46 @@
+void MODIFICADIRECTA()
+{
+    
+    int cod;
+    long int dir_fisica;
+    tproduct prod;
+    FILE *alias;
+    alias = fopen("productos.dat", "rb+");
+    if(alias== NULL)
+        cout << "Archivo no encontrado" << endl;
+    else
+    {
+        cout << "Ingrese el codigo: ";
+        cin >> cod;
+        dir_fisica=cod*sizeof(prod);
+        fseek(alias,dir_fisica,SEEK_SET);
+        fread(&prod,sizeof(prod),1,alias);
+        if(prod.cod==cod)
+        {
+            cout << "\r\n**************MODIFICACION PRODUCTOS**************\n" << "Codigo: " << prod.cod << "\nDetalle: " << prod.detalle << "\nCantidad: " << prod.cant << "\nPrecio: " << prod.precio << endl;
+            cout << "\rAnote los nuevos datos ...";
+            cout << "\n\rDetalle: ";
+            cin.ignore();
+            getline(cin, prod.detalle);
+            cout << "\n\rCantidad : ";
+            cin >> prod.cant;
+            cout << "\n\rPrecio : ";
+            cin >> prod.precio;
+            fseek(alias, dir_fisica, SEEK_SET);
+            fwrite(&prod, sizeof(prod), 1, alias);
+        }
+        else
+            cout << "Producto no Encontrado\n";
+        
+    }
+    fclose(alias);
+    return ;
+    
+}
+Encontrado\n";
+        
+    }
+    fclose(alias);
+    return ;
+    
+}
