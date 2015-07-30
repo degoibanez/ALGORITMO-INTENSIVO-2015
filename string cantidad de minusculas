@@ -1,0 +1,9 @@
+int minusculas(string frase)
+{int i,tam,c=0;
+ tam=frase.length();
+  for(i=0;i<n;i++)
+   {if((frase[i]>=97)&&(frase[i]<=122)
+    c++;
+   }
+  return c;
+}
